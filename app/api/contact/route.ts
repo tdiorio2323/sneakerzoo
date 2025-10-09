@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -25,18 +25,23 @@ export async function POST(req: Request) {
       );
     }
 
-    // Send email using Resend
-    await resend.emails.send({
-      from: "site@sneakerzoo.example", // Replace with your verified domain
-      to: "you@example.com", // Replace with your recipient email
-      subject: "New Contact — Sneaker Zoo",
-      text: `Name: ${parsed.data.name}\nEmail: ${parsed.data.email}\nMessage: ${parsed.data.message}`,
-      html: `
-        <p><strong>Name:</strong> ${parsed.data.name}</p>
-        <p><strong>Email:</strong> ${parsed.data.email}</p>
-        <p><strong>Message:</strong> ${parsed.data.message}</p>
-      `,
-    });
+    // Send email using Resend (if configured)
+    if (resend) {
+      await resend.emails.send({
+        from: "site@sneakerzoo.example", // Replace with your verified domain
+        to: "you@example.com", // Replace with your recipient email
+        subject: "New Contact — Sneaker Zoo",
+        text: `Name: ${parsed.data.name}\nEmail: ${parsed.data.email}\nMessage: ${parsed.data.message}`,
+        html: `
+          <p><strong>Name:</strong> ${parsed.data.name}</p>
+          <p><strong>Email:</strong> ${parsed.data.email}</p>
+          <p><strong>Message:</strong> ${parsed.data.message}</p>
+        `,
+      });
+    } else {
+      // Log to console if Resend is not configured
+      console.log('Contact form submission (Resend not configured):', parsed.data);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
