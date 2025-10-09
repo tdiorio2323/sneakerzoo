@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone, ChevronRight } from "lucide-react";
 import { BUSINESS, SOCIAL_LINKS } from "@/lib/constants";
 
 export default function HomePage() {
@@ -45,7 +45,7 @@ export default function HomePage() {
 
             {/* Buttons */}
             <div className="flex flex-col gap-2.5 sm:gap-3 w-full px-4 sm:px-8">
-              {/* Instagram */}
+              {/* Row 1: Follow Us (Full Width) */}
               <Button
                 type="button"
                 onClick={() => window.open("https://www.instagram.com/sneakerzooapparel/", "_blank")}
@@ -59,32 +59,47 @@ export default function HomePage() {
                 FOLLOW US
               </Button>
 
-              {/* Location */}
-              <Button
-                type="button"
-                onClick={() => window.open("https://share.google/BGdYANudsnHXSzTff", "_blank")}
-                className="w-full h-12 sm:h-14 text-black font-bold text-xl sm:text-2xl tracking-wider font-bebas bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
-                  boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                FIND US
-              </Button>
+              {/* Row 2: Two Half Buttons (Icons Only) */}
+              <div className="flex gap-2.5 sm:gap-3 w-full">
+                {/* Location (Half Width) */}
+                <Button
+                  type="button"
+                  onClick={() => window.open("https://share.google/BGdYANudsnHXSzTff", "_blank")}
+                  className="flex-1 h-12 sm:h-14 text-black font-bold bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50 flex items-center justify-center"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
+                    boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
+                  }}
+                >
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+                </Button>
 
-              {/* Call */}
+                {/* Call (Half Width) */}
+                <Button
+                  type="button"
+                  onClick={() => window.open("tel:3476838053", "_self")}
+                  className="flex-1 h-12 sm:h-14 text-black font-bold bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50 flex items-center justify-center"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
+                    boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
+                  }}
+                >
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
+                </Button>
+              </div>
+
+              {/* Row 3: Enter Button (Full Width) */}
               <Button
                 type="button"
-                onClick={() => window.open("tel:3476838053", "_self")}
+                onClick={() => window.location.href = "/gallery"}
                 className="w-full h-12 sm:h-14 text-black font-bold text-xl sm:text-2xl tracking-wider font-bebas bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50"
                 style={{
                   background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
                   boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
                 }}
               >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                CALL US
+                ENTER
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </div>
 
