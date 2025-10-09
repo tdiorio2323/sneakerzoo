@@ -1,0 +1,9 @@
+# Gallery Images
+# Add 01.jpg through 06.jpg (or more) here
+# Recommended specs:
+# - Format: JPG, PNG, or WebP
+# - Size: 1200x1200px (square) or larger
+# - Optimized for web (<500KB each)
+#
+# The GalleryGrid component will automatically load images from this directory.
+# To add more images, update the galleryFiles array in components/GalleryGrid.tsx

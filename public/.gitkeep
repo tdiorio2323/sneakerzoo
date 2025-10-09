@@ -1,0 +1,6 @@
+# This file ensures the public directory is tracked by git
+# Replace placeholder assets with your actual images:
+# - logo.svg - Your store logo
+# - og.jpg - Open Graph image (1200x630px)
+# - favicon.ico - Browser favicon
+# - apple-touch-icon.png - iOS home screen icon

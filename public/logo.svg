@@ -1,0 +1,10 @@
+<svg width="300" height="120" viewBox="0 0 300 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- SNEAKER text -->
+  <text x="150" y="40" font-family="Impact, Arial Black, sans-serif" font-size="36" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">SNEAKER</text>
+
+  <!-- ZOO text with animal silhouette -->
+  <text x="150" y="80" font-family="Impact, Arial Black, sans-serif" font-size="48" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">ZOO</text>
+
+  <!-- & APPAREL text -->
+  <text x="150" y="105" font-family="Impact, Arial Black, sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">&amp; APPAREL</text>
+</svg>

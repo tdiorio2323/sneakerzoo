@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 100%;
+    --radius: 0.75rem;
+  }
+  .dark { /* same values for now; adjust if needed */ }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
+
+/* card polish */
+.card-surface { @apply rounded-2xl border border-white/10 shadow-subtle; }
+.btn-primary { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium bg-white text-black hover:bg-white/90 transition; }
+.btn-ghost  { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium border border-white/15 hover:border-white/30; }
+/* mobile sticky bar */
+.mobile-stick { @apply fixed bottom-3 inset-x-3 z-50 grid grid-cols-3 gap-2; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

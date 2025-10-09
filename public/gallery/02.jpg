@@ -1,0 +1,9 @@
+<svg width="1200" height="1200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#2a2a2a"/>
+  <text x="600" y="600" font-family="Arial" font-size="80" fill="#666" text-anchor="middle" dominant-baseline="middle">
+    Gallery Image 02
+  </text>
+  <text x="600" y="700" font-family="Arial" font-size="40" fill="#444" text-anchor="middle" dominant-baseline="middle">
+    Replace with product photo
+  </text>
+</svg>
