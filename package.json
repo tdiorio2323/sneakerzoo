@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:fast": "NEXT_TELEMETRY_DISABLED=1 next dev --turbo -p 3000",
-    "build": "next build && next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "check:imports": "eslint --ext .ts,.tsx components app --rule 'import/no-named-default:error' --rule 'import/no-named-as-default:error'"

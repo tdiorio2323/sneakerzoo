@@ -84,9 +84,9 @@ RootLayout (app/layout.tsx)
 
 **POST /api/contact** (`app/api/contact/route.ts`):
 - Validates form input with Zod schema
-- Sends email via Resend API
-- **Action Required**: Update `from` and `to` email addresses (lines 30-31)
-- **Env Var Required**: `RESEND_API_KEY`
+- Sends email via Resend API (optional - logs to console if not configured)
+- **Action Required**: Update `from` and `to` email addresses (lines 31-32)
+- **Env Var Optional**: `RESEND_API_KEY` (app works without it, just logs instead)
 
 ### Image Optimization
 
@@ -101,12 +101,14 @@ Next.js Image component configured for:
 ## Configuration Notes
 
 ### Environment Variables
-Required for full functionality:
+Optional for enhanced functionality:
 ```bash
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY  # Maps embed
 RESEND_API_KEY                   # Contact form emails
 NEXT_PUBLIC_BASE_URL             # Production domain (update from localhost)
 ```
+
+**Note**: The app is fully functional without these environment variables. Contact form will log to console, and map will show a placeholder.
 
 ### Pre-Deployment Checklist
 1. Update `BUSINESS.email` in `lib/constants.ts` (currently "TODO")
@@ -130,13 +132,13 @@ NEXT_PUBLIC_BASE_URL             # Production domain (update from localhost)
 - **React 19 & Next.js 15**: Uses latest stable versions with App Router
 - **No Database**: Fully static with serverless API routes
 - **Dark Mode**: Class-based (`className="dark"` on `<html>`)
-- **Font**: Inter variable font via `next/font/google` with `display: swap`
+- **Fonts**: Inter (body) and Bebas Neue (headings) via `next/font/google` with `display: swap`
 - **Package Manager**: pnpm 9.15.9 (enforced via `packageManager` field)
 - **Mobile-First**: Sticky action bar on mobile, responsive container padding
 
 ## Known Placeholder/TODO Items
 
 1. **Instagram Feed**: `IGFeed.tsx` uses static placeholder tiles. Needs real Instagram API or embed integration.
-2. **Email Addresses**: Contact form recipient email is `you@example.com` (update in API route).
-3. **Business Email**: `BUSINESS.email` is "TODO" in constants.ts.
+2. **Email Addresses**: Contact form recipient email is `you@example.com` (update in API route line 32).
+3. **Business Email**: `BUSINESS.email` is "TODO" in constants.ts line 26.
 4. **Google Maps**: API key placeholder in `MapEmbed.tsx` (needs real key from Google Cloud Console).
