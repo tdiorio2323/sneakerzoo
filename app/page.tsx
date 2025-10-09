@@ -20,15 +20,17 @@ export default function HomePage() {
       `}</style>
 
       <div
-        className="min-h-screen w-full flex items-center justify-center p-3 sm:p-4 md:p-6 relative"
+        className="min-h-[100svh] md:min-h-[100dvh] w-full flex items-center justify-center p-3 sm:p-4 md:p-6 relative"
         style={{
           backgroundImage: "url('/hero-image.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          paddingTop: "max(env(safe-area-inset-top), 0px)",
+          paddingBottom: "max(env(safe-area-inset-bottom), 0px)",
         }}
       >
-        <Card className="w-full max-w-[95vw] sm:max-w-md bg-black/10 backdrop-blur-sm border-2 border-white/20 shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10">
-          <CardHeader className="text-center space-y-3 sm:space-y-4 p-4 sm:p-6">
+        <Card className="w-full max-w-[95vw] sm:max-w-md bg-black/10 backdrop-blur-sm border-2 border-white/20 shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10 min-h-[72vh] sm:min-h-[60vh]">
+          <CardHeader className="text-center space-y-4 sm:space-y-5 p-6 sm:p-8">
             <div className="flex items-center justify-center">
               <img
                 src="/Sneaker zoo Logo White.png"
@@ -88,7 +90,7 @@ export default function HomePage() {
 
             {/* Image Box */}
             <div className="w-full px-4 sm:px-8 mt-3 sm:mt-4">
-              <div className="relative w-full h-48 sm:h-56 md:h-64 rounded-lg overflow-hidden border-2 border-white/20 shadow-lg">
+              <div className="relative w-full h-56 sm:h-64 md:h-72 rounded-lg overflow-hidden border-2 border-white/20 shadow-lg">
                 <img
                   src="/imagebox-1.jpg"
                   alt="Sneaker Zoo"
@@ -98,7 +100,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-3 sm:mt-4 text-center space-y-2 sm:space-y-3">
-              <div className="text-white text-xs sm:text-sm px-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div className="text-white text-xs sm:text-sm px-2 font-sans">
                 {BUSINESS.addressLine}, {BUSINESS.city}, {BUSINESS.region} {BUSINESS.postalCode}
               </div>
               <div className="flex items-center justify-center gap-4 sm:gap-5">
