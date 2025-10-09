@@ -98,7 +98,7 @@ export default function HomePage() {
                   boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
                 }}
               >
-                ENTER
+                ENTER SITE
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </div>
