@@ -80,7 +80,7 @@ export function ContactCard() {
         setStatus("error");
         setStatusMessage("Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
       setStatusMessage("Failed to send message. Please try again.");
     }
