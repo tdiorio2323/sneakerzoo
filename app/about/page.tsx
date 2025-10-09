@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import { getPageMetadata } from "@/lib/seo";
 import Container from "@/components/Container";
 import Section from "@/components/Section";
