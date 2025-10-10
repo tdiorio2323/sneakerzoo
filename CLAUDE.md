@@ -14,7 +14,8 @@ pnpm dev              # Standard dev server on :3000
 pnpm dev:fast         # Turbo mode (faster, no telemetry)
 
 # Building & Quality Checks
-pnpm build            # Production build + start server
+pnpm build            # Production build
+pnpm start            # Start production server
 pnpm lint             # ESLint validation
 pnpm typecheck        # TypeScript type checking
 pnpm check:imports    # Verify no named default imports
@@ -44,6 +45,24 @@ This site is built with SEO as a primary concern:
    - `app/sitemap.ts` - Auto-generated XML sitemap
    - `app/robots.ts` - Robots.txt with sitemap reference
 
+### Product Catalog Architecture
+
+The site uses a **mock data system** for product listings while the real inventory system is being implemented:
+
+- `lib/mock.ts` - Contains `getMockProducts()` and `slugify()` utilities
+- Dynamic routes: `/mens/[slug]`, `/womens/[slug]`, `/footwear/[slug]`, `/accessories/[slug]`
+- Pattern: Server Component (page.tsx) → Client Component (*DetailClient.tsx) for interactivity
+- Each product page receives slug via async params (Next.js 15 pattern)
+
+**Example pattern:**
+```typescript
+// app/footwear/[slug]/page.tsx
+export default async function FootwearDetailPage(props: FootwearDetailPageProps) {
+  const params = await props.params;
+  return <FootwearDetailClient slug={params.slug} />;
+}
+```
+
 ### Styling System
 
 **Dark Theme Only** - Black background (#000) with white text, using CSS variables in HSL format.
@@ -55,6 +74,12 @@ This site is built with SEO as a primary concern:
 - `.mobile-stick` - Fixed bottom action bar (3-column grid)
 
 **Theme Tokens**: All colors use CSS custom properties (`--background`, `--foreground`, etc.) defined in `:root` and `.dark` classes.
+
+**Tailwind Extensions** (`tailwind.config.ts`):
+- Custom container padding that scales with breakpoints
+- Custom fonts: `font-sans` (Inter), `font-bebas` (Bebas Neue)
+- Custom shadows: `shadow-subtle` for cards
+- Custom background: `bg-hero-texture` for hero sections
 
 ### Component Patterns
 
@@ -130,7 +155,8 @@ NEXT_PUBLIC_BASE_URL             # Production domain (update from localhost)
 ## Important Technical Details
 
 - **React 19 & Next.js 15**: Uses latest stable versions with App Router
-- **No Database**: Fully static with serverless API routes
+- **Async Params**: Dynamic routes use `await props.params` (Next.js 15 pattern)
+- **No Database**: Fully static with serverless API routes and mock product data
 - **Dark Mode**: Class-based (`className="dark"` on `<html>`)
 - **Fonts**: Inter (body) and Bebas Neue (headings) via `next/font/google` with `display: swap`
 - **Package Manager**: pnpm 9.15.9 (enforced via `packageManager` field)
@@ -142,3 +168,4 @@ NEXT_PUBLIC_BASE_URL             # Production domain (update from localhost)
 2. **Email Addresses**: Contact form recipient email is `you@example.com` (update in API route line 32).
 3. **Business Email**: `BUSINESS.email` is "TODO" in constants.ts line 26.
 4. **Google Maps**: API key placeholder in `MapEmbed.tsx` (needs real key from Google Cloud Console).
+5. **Product Data**: Currently using mock data from `lib/mock.ts`. Replace with real product database/CMS when ready.

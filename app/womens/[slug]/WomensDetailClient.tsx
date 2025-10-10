@@ -39,7 +39,7 @@ export default function WomensDetailClient({ slug }: WomensDetailClientProps) {
             <div className="aspect-square rounded-xl overflow-hidden border border-white/10 bg-neutral-900">
               <div className="relative h-full w-full">
                 <Image
-                  src="/logo.png"
+                  src="/imagebox-1.jpg"
                   alt={title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

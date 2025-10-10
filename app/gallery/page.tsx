@@ -111,7 +111,7 @@ export default function LandingPage() {
             {/* Footwear */}
             <Link href="/footwear" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
               <Image
-                src="/logo.png"
+                src="/imagebox-1.jpg"
                 alt="Footwear"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -129,7 +129,7 @@ export default function LandingPage() {
             {/* Mens */}
             <Link href="/mens" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
               <Image
-                src="/logo.png"
+                src="/imagebox-1.jpg"
                 alt="Mens Apparel"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -147,7 +147,7 @@ export default function LandingPage() {
             {/* Womens */}
             <Link href="/womens" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
               <Image
-                src="/logo.png"
+                src="/imagebox-1.jpg"
                 alt="Womens Apparel"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -165,7 +165,7 @@ export default function LandingPage() {
             {/* Accessories */}
             <Link href="/accessories" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
               <Image
-                src="/logo.png"
+                src="/imagebox-1.jpg"
                 alt="Accessories"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
