@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { getPageMetadata } from "@/lib/seo";
 import Container from "@/components/Container";
 import Section from "@/components/Section";
+import IGFeed from "@/components/IGFeed";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Heart, Users } from "lucide-react";
 
@@ -114,6 +115,16 @@ export default function AboutPage() {
           <p className="text-center text-sm text-white/40 mt-6 italic">
             Replace with actual store photos in /public/
           </p>
+        </Container>
+      </Section>
+
+      {/* Instagram Feed */}
+      <Section>
+        <Container>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Follow Our Journey
+          </h2>
+          <IGFeed />
         </Container>
       </Section>
     </>

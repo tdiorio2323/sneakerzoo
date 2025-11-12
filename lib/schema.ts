@@ -26,7 +26,7 @@ export const localBusinessJsonLd = () => ({
   priceRange: "$$",
   geo: {
     "@type": "GeoCoordinates",
-    latitude: "40.5733",
-    longitude: "-74.1141",
+    latitude: "40.5755529",
+    longitude: "-74.1210826",
   },
 });

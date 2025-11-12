@@ -49,10 +49,15 @@ This site is built with SEO as a primary concern:
 
 The site uses a **mock data system** for product listings while the real inventory system is being implemented:
 
-- `lib/mock.ts` - Contains `getMockProducts()` and `slugify()` utilities
+- `lib/mock.ts` - Contains `getMockProducts()` (generates 16 products per category) and `slugify()` utilities
 - Dynamic routes: `/mens/[slug]`, `/womens/[slug]`, `/footwear/[slug]`, `/accessories/[slug]`
 - Pattern: Server Component (page.tsx) → Client Component (*DetailClient.tsx) for interactivity
 - Each product page receives slug via async params (Next.js 15 pattern)
+
+**Server/Client Component Split**:
+- `page.tsx` - Server Component that handles async params
+- `*DetailClient.tsx` - Client Component with "use client" directive for interactivity
+- This pattern is required for Next.js 15 App Router with client-side features
 
 **Example pattern:**
 ```typescript
@@ -100,7 +105,7 @@ RootLayout (app/layout.tsx)
 **Key Component Responsibilities**:
 - `Hero.tsx` - Parallax hero with Framer Motion
 - `GalleryGrid.tsx` - Product photo grid with lightbox
-- `IGFeed.tsx` - Instagram feed (currently placeholder tiles)
+- `IGFeed.tsx` - Instagram feed using `react-social-media-embed` (displays featured posts on About page)
 - `ContactCard.tsx` - Form with Zod validation, Resend email
 - `MapEmbed.tsx` - Google Maps iframe (needs API key in env)
 - `HoursLocation.tsx` - Dynamic "Open Now" badge based on current time
@@ -115,13 +120,15 @@ RootLayout (app/layout.tsx)
 
 ### Image Optimization
 
-Next.js Image component configured for:
+Next.js Image component configured in `next.config.ts`:
 - Formats: AVIF, WebP (fallback to original)
 - Device sizes: 480, 768, 1080, 1440px
 - Image sizes: 64, 96, 128, 256, 384px
 - Unoptimized in dev mode for speed
 
 **Gallery Images**: Place in `public/gallery/` as `01.jpg`, `02.jpg`, etc. Update `GalleryGrid.tsx` if adding more than 6 images.
+
+**Product Placeholder**: Currently all products use `/imagebox-1.jpg` as placeholder (see `lib/mock.ts`).
 
 ## Configuration Notes
 
@@ -144,9 +151,10 @@ NEXT_PUBLIC_BASE_URL             # Production domain (update from localhost)
 6. Add real product photos to `public/gallery/`
 
 ### ESLint Rules
-- Named default imports are **blocked** (`import/no-named-default`)
+- Named default imports are **blocked** (`import/no-named-default`, `import/no-named-as-default`)
 - Use `import Component` not `import { default as Component }`
 - Next.js `<img>` warnings are disabled (use Next Image component)
+- Run `pnpm check:imports` to verify import compliance
 
 ### TypeScript Path Alias
 - `@/*` maps to project root
@@ -162,10 +170,25 @@ NEXT_PUBLIC_BASE_URL             # Production domain (update from localhost)
 - **Package Manager**: pnpm 9.15.9 (enforced via `packageManager` field)
 - **Mobile-First**: Sticky action bar on mobile, responsive container padding
 
+## Instagram Integration
+
+The site includes Instagram feed integration using `react-social-media-embed`:
+
+- **Package**: No API key required - uses Instagram's public embed system
+- **Location**: About page (`app/about/page.tsx`)
+- **Component**: `components/IGFeed.tsx`
+- **Setup**: Add Instagram post URLs to `FEATURED_POSTS` array in `IGFeed.tsx`
+- **Documentation**: See `INSTAGRAM_SETUP.md` for detailed instructions
+
+**How to add posts:**
+1. Get post URL from Instagram (click "..." → "Copy link")
+2. Add URLs to `FEATURED_POSTS` array in `components/IGFeed.tsx`
+3. Component displays up to 3 featured posts in responsive grid
+
 ## Known Placeholder/TODO Items
 
-1. **Instagram Feed**: `IGFeed.tsx` uses static placeholder tiles. Needs real Instagram API or embed integration.
-2. **Email Addresses**: Contact form recipient email is `you@example.com` (update in API route line 32).
-3. **Business Email**: `BUSINESS.email` is "TODO" in constants.ts line 26.
+1. **Instagram Posts**: Add real post URLs to `FEATURED_POSTS` in `IGFeed.tsx` (see `INSTAGRAM_SETUP.md`)
+2. **Email Addresses**: Contact form sender is `site@sneakerzoo.example` and recipient is `you@example.com` (update in `app/api/contact/route.ts` lines 31-32).
+3. **Business Email**: `BUSINESS.email` is "TODO" in `lib/constants.ts` line 26.
 4. **Google Maps**: API key placeholder in `MapEmbed.tsx` (needs real key from Google Cloud Console).
-5. **Product Data**: Currently using mock data from `lib/mock.ts`. Replace with real product database/CMS when ready.
+5. **Product Data**: Currently using mock data from `lib/mock.ts` (16 products per category, all using `/imagebox-1.jpg`). Replace with real product database/CMS when ready.
