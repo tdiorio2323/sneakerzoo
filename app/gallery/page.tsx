@@ -97,6 +97,71 @@ export default function LandingPage() {
         </Container>
       </Section>
 
+      {/* Featured Collection - GODSPEED */}
+      <Section className="py-20 bg-neutral-900/30">
+        <Container>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Image Box */}
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-neutral-800 to-neutral-900 shadow-2xl border border-white/10">
+                <Image
+                  src="https://www.godspeednewyork.com/cdn/shop/files/28_fa113e9d-5a9a-4892-b565-8918fb784531.jpg"
+                  alt="GODSPEED On The Run Collection"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+
+              {/* Content */}
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <div className="inline-block px-4 py-1.5 bg-white/10 rounded-full text-sm font-medium border border-white/20">
+                    Featured Collection
+                  </div>
+                  <h2 className="text-5xl md:text-6xl font-bold leading-tight">
+                    GODSPEED
+                  </h2>
+                  <p className="text-xl text-white/70 leading-relaxed">
+                    Discover the exclusive "On The Run" collection. Premium streetwear designed
+                    for those who move with purpose. Bold graphics meet superior comfort.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-white text-black hover:bg-white/90 font-semibold text-lg px-8 py-6 h-auto"
+                  >
+                    <Link href="/mens/godspeed">
+                      Shop GODSPEED
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Collection Highlights */}
+                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                  <div>
+                    <div className="text-2xl font-bold">4</div>
+                    <div className="text-sm text-white/60">Colorways</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">$180</div>
+                    <div className="text-sm text-white/60">Premium Quality</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">New</div>
+                    <div className="text-sm text-white/60">Just Arrived</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Categories Section */}
       <Section className="py-20">
         <Container>
