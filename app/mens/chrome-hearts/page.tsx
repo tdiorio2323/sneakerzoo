@@ -11,7 +11,12 @@ export const metadata: Metadata = getPageMetadata(
 );
 
 const chromeHeartsProducts = [
-  // Products will be added here
+  {
+    title: 'Chrome Hearts Stencil Socks',
+    imageSrc: 'https://www.chromehearts.com/dw/image/v2/BCVS_PRD/on/demandware.static/-/Sites-masterCatalog_ChromeHearts/default/dw35e5a211/img_products/hi-res/316176354MB3MED465_1.png',
+    href: '/mens/chrome-hearts/stencil-socks',
+    price: '$255.00'
+  }
 ];
 
 export default function ChromeHeartsCollectionPage() {
