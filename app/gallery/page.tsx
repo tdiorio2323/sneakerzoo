@@ -100,6 +100,10 @@ export default function LandingPage() {
       {/* Featured Collection - GODSPEED */}
       <Section className="py-20 bg-neutral-900/30">
         <Container>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold">SHOP FEATURED COLLECTIONS</h2>
+          </div>
+
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Image Box */}
