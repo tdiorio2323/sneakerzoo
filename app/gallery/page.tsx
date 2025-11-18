@@ -127,7 +127,7 @@ export default function LandingPage() {
                     GODSPEED
                   </h2>
                   <p className="text-xl text-white/70 leading-relaxed">
-                    Discover the exclusive "On The Run" collection. Premium streetwear designed
+                    Discover the exclusive &ldquo;On The Run&rdquo; collection. Premium streetwear designed
                     for those who move with purpose. Bold graphics meet superior comfort.
                   </p>
                 </div>
@@ -226,7 +226,7 @@ export default function LandingPage() {
                   </h2>
                   <p className="text-xl text-white/70 leading-relaxed">
                     Legendary sneakers that defined a generation. From iconic retros to modern classics,
-                    step into the legacy of basketball's greatest athlete.
+                    step into the legacy of basketball&apos;s greatest athlete.
                   </p>
                 </div>
 
