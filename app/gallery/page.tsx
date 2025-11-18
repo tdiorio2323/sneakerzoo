@@ -140,22 +140,6 @@ export default function LandingPage() {
                     </Link>
                   </Button>
                 </div>
-
-                {/* Collection Highlights */}
-                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
-                  <div>
-                    <div className="text-2xl font-bold">4</div>
-                    <div className="text-sm text-white/60">Colorways</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold">$180</div>
-                    <div className="text-sm text-white/60">Premium Quality</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold">New</div>
-                    <div className="text-sm text-white/60">Just Arrived</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
