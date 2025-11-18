@@ -35,8 +35,7 @@ export const BUSINESS: {
 
 export const NAVIGATION = [
   { name: "Home", href: "/" },
-  { name: "Mens", href: "/mens" },
-  { name: "Womens", href: "/womens" },
+  { name: "Apparel", href: "/apparel" },
   { name: "Footwear", href: "/footwear" },
   { name: "Accessories", href: "/accessories" },
   { name: "Gallery", href: "/gallery" },

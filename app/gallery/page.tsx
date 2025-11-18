@@ -50,7 +50,7 @@ export default function LandingPage() {
                   size="lg"
                   className="border-white text-white hover:bg-white hover:text-black font-semibold text-lg px-8 py-6 h-auto"
                 >
-                  <Link href="/mens">
+                  <Link href="/apparel">
                     Browse Apparel
                   </Link>
                 </Button>
@@ -138,7 +138,7 @@ export default function LandingPage() {
                     size="lg"
                     className="bg-white text-black hover:bg-white/90 font-semibold text-lg px-8 py-6 h-auto"
                   >
-                    <Link href="/mens/godspeed">
+                    <Link href="/apparel/godspeed">
                       Shop GODSPEED
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
@@ -176,7 +176,7 @@ export default function LandingPage() {
                     size="lg"
                     className="bg-white text-black hover:bg-white/90 font-semibold text-lg px-8 py-6 h-auto"
                   >
-                    <Link href="/mens/supreme">
+                    <Link href="/apparel/supreme">
                       Shop SUPREME
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
@@ -236,7 +236,7 @@ export default function LandingPage() {
                     size="lg"
                     className="bg-white text-black hover:bg-white/90 font-semibold text-lg px-8 py-6 h-auto"
                   >
-                    <Link href="/mens/air-jordan">
+                    <Link href="/apparel/air-jordan">
                       Shop AIR JORDAN
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
@@ -258,7 +258,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Footwear */}
             <Link href="/footwear" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
               <Image
@@ -277,36 +277,18 @@ export default function LandingPage() {
               </div>
             </Link>
 
-            {/* Mens */}
-            <Link href="/mens" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
+            {/* Apparel */}
+            <Link href="/apparel" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
               <Image
                 src="/imagebox-1.jpg"
-                alt="Mens Apparel"
+                alt="Apparel"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
               <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-2xl font-bold mb-2">Men&apos;s</h3>
+                <h3 className="text-2xl font-bold mb-2">Apparel</h3>
                 <p className="text-white/80 text-sm mb-4">Streetwear & urban fashion</p>
-                <Button size="sm" className="bg-white text-black hover:bg-white/90">
-                  Shop Now
-                </Button>
-              </div>
-            </Link>
-
-            {/* Womens */}
-            <Link href="/womens" className="group relative overflow-hidden rounded-xl bg-neutral-900 aspect-square">
-              <Image
-                src="/imagebox-1.jpg"
-                alt="Womens Apparel"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <h3 className="text-2xl font-bold mb-2">Women&apos;s</h3>
-                <p className="text-white/80 text-sm mb-4">Trendy styles & essentials</p>
                 <Button size="sm" className="bg-white text-black hover:bg-white/90">
                   Shop Now
                 </Button>
