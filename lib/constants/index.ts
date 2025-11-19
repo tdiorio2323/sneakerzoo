@@ -29,3 +29,13 @@ export {
 } from './sizes';
 
 export type { FootwearSize, ApparelSize } from './sizes';
+
+// Brand constants
+export {
+  BRANDS,
+  BRAND_CATEGORIES,
+  getBrandBySlug,
+  getBrandsByCategory,
+} from './brands';
+
+export type { BrandInfo } from './brands';

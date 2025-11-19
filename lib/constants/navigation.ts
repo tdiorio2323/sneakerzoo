@@ -13,7 +13,7 @@ export const NAVIGATION: readonly NavigationItem[] = [
   { name: "Footwear", href: "/footwear" },
   { name: "Accessories", href: "/accessories" },
   { name: "Gallery", href: "/gallery" },
-  { name: "About", href: "/about" },
+  { name: "Shop By Brand", href: "/brands" },
   { name: "Contact", href: "/contact" },
 ] as const;
 
@@ -26,7 +26,7 @@ export const ROUTES = {
   footwear: "/footwear",
   accessories: "/accessories",
   gallery: "/gallery",
-  about: "/about",
+  brands: "/brands",
   contact: "/contact",
   api: {
     contact: "/api/contact",
