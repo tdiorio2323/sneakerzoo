@@ -3,14 +3,15 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import ProductGrid from '@/components/ProductGrid';
 import { getPageMetadata } from '@/lib/seo';
+import { ProductGridItem } from '@/lib/types';
 
 export const metadata: Metadata = getPageMetadata(
   'NEW BALANCE Collection',
   'Explore the NEW BALANCE performance and lifestyle collection',
-  '/mens/new-balance'
+  '/apparel/new-balance'
 );
 
-const newBalanceProducts = [
+const newBalanceProducts: ProductGridItem[] = [
   // Products will be added here
 ];
 

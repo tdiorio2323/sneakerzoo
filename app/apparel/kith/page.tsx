@@ -3,14 +3,15 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import ProductGrid from '@/components/ProductGrid';
 import { getPageMetadata } from '@/lib/seo';
+import { ProductGridItem } from '@/lib/types';
 
 export const metadata: Metadata = getPageMetadata(
   'KITH Collection',
   'Explore the KITH premium streetwear collection',
-  '/mens/kith'
+  '/apparel/kith'
 );
 
-const kithProducts = [
+const kithProducts: ProductGridItem[] = [
   // Products will be added here
 ];
 

@@ -3,14 +3,15 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import ProductGrid from '@/components/ProductGrid';
 import { getPageMetadata } from '@/lib/seo';
+import { ProductGridItem } from '@/lib/types';
 
 export const metadata: Metadata = getPageMetadata(
   'ASICS Collection',
   'Explore the ASICS performance running and lifestyle collection',
-  '/mens/asics'
+  '/apparel/asics'
 );
 
-const asicsProducts = [
+const asicsProducts: ProductGridItem[] = [
   // Products will be added here
 ];
 

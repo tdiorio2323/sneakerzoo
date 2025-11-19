@@ -3,14 +3,15 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import ProductGrid from '@/components/ProductGrid';
 import { getPageMetadata } from '@/lib/seo';
+import { ProductGridItem } from '@/lib/types';
 
 export const metadata: Metadata = getPageMetadata(
   'RALPH LAUREN POLO Collection',
   'Explore the RALPH LAUREN POLO classic American style collection',
-  '/mens/ralph-lauren-polo'
+  '/apparel/ralph-lauren-polo'
 );
 
-const ralphLaurenProducts = [
+const ralphLaurenProducts: ProductGridItem[] = [
   // Products will be added here
 ];
 

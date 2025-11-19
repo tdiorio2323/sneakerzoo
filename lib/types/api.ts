@@ -4,8 +4,6 @@
  * Types for API requests, responses, and error handling
  */
 
-import { z } from 'zod';
-
 /**
  * Generic API response wrapper
  */

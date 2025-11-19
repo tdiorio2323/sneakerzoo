@@ -3,14 +3,15 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import ProductGrid from '@/components/ProductGrid';
 import { getPageMetadata } from '@/lib/seo';
+import { ProductGridItem } from '@/lib/types';
 
 export const metadata: Metadata = getPageMetadata(
   'NIKE Collection',
   'Explore the NIKE athletic and lifestyle collection',
-  '/mens/nike'
+  '/apparel/nike'
 );
 
-const nikeProducts = [
+const nikeProducts: ProductGridItem[] = [
   // Products will be added here
 ];
 
