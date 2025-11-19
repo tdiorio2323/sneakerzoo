@@ -29,14 +29,20 @@ pnpm check:imports    # Verify no named default imports (enforced rule)
 
 ### Core Architectural Patterns
 
-**1. SEO-First Architecture** - SEO is a primary architectural concern:
-   - **Single Source of Truth**: `lib/constants.ts` contains all business data (hours, address, phone, social)
+**1. Modular Constants & Types Architecture** - Organized barrel export pattern:
+   - **Constants**: `lib/constants/` split into `business.ts`, `navigation.ts`, `sizes.ts` with centralized export via `index.ts`
+   - **Types**: `lib/types/` split into `product.ts`, `business.ts`, `api.ts`, `ui.ts`, `seo.ts` with centralized export via `index.ts`
+   - **Import Pattern**: Always import from barrel exports: `import { BUSINESS, Product } from '@/lib/constants'` or `'@/lib/types'`
+   - **Legacy**: Old `lib/constants.ts` still exists for backwards compatibility (prefer new modular structure)
+
+**2. SEO-First Architecture** - SEO is a primary architectural concern:
+   - **Single Source of Truth**: `lib/constants/business.ts` contains all business data (hours, address, phone, social)
    - **Metadata System**: `lib/seo.ts` provides `baseMetadata` and `getPageMetadata()` helpers
    - **Structured Data**: `lib/schema.ts` generates JSON-LD (ShoeStore schema) injected in root layout
    - **Dynamic SEO**: `app/sitemap.ts` and `app/robots.ts` auto-generate sitemap/robots.txt
    - **Domain Config**: `metadataBase` set to thesneakerzoo.com in `lib/seo.ts`
 
-**2. Server/Client Component Split** (Next.js 15 App Router Pattern):
+**3. Server/Client Component Split** (Next.js 15 App Router Pattern):
    - Dynamic route pages are Server Components that handle async params
    - Client Components (with "use client") handle interactivity
    - Pattern: `page.tsx` (server) → `*DetailClient.tsx` (client)
@@ -50,12 +56,16 @@ pnpm check:imports    # Verify no named default imports (enforced rule)
    }
    ```
 
-**3. Mock Data System** (Temporary until real inventory):
-   - `lib/mock.ts`: `getMockProducts()` generates 16 products per category
-   - All products currently use `/imagebox-1.jpg` placeholder
-   - Dynamic routes: `/mens/[slug]`, `/womens/[slug]`, `/footwear/[slug]`, `/accessories/[slug]`
+**4. Product Data System** - Two-tier product structure:
+   - **Mock Data**: `lib/mock.ts` provides `getMockProducts()` generating 16 placeholder products per category
+   - **Real Products**: Brand collection pages have hardcoded product arrays with real images/data
+   - **Categories**: Apparel, Footwear, Accessories
+   - **Brand Collections**: `/apparel/chrome-hearts`, `/apparel/air-jordan`, `/apparel/supreme`, `/apparel/godspeed`, etc.
+   - **Dynamic Routes**:
+     - Generic: `/apparel/[slug]`, `/footwear/[slug]`, `/accessories/[slug]`
+     - Brand-specific: Each brand has own `page.tsx` with product array
 
-**4. Layout Structure**:
+**5. Layout Structure**:
    ```
    RootLayout (app/layout.tsx)
    ├── Header (sticky nav)
@@ -64,10 +74,30 @@ pnpm check:imports    # Verify no named default imports (enforced rule)
    └── Mobile Sticky Bar (call/directions/Instagram - mobile only)
    ```
 
-**5. Data Flow**:
+**6. Data Flow**:
    - Business constants → Components (import from `@/lib/constants`)
+   - Type definitions → All modules (import from `@/lib/types`)
    - SEO metadata → Page-level exports (use `getPageMetadata()`)
    - JSON-LD schema → Root layout `<head>` injection
+
+## Type System
+
+**Centralized Type Definitions** (`lib/types/`):
+- **Product Types**: `Product`, `ProductImage`, `BrandCollection`, `ProductCardData` - Full product model with images, pricing, categories
+- **Business Types**: `BusinessInfo`, `BusinessHours`, `NavigationItem` - Store information and navigation
+- **API Types**: `ApiResponse`, `ContactFormData`, `ApiError` - HTTP responses and form validation
+- **UI Types**: `ContainerProps`, `SectionProps`, `BadgeVariant`, `LoadingState` - Component props and UI states
+- **SEO Types**: `PageMetadata`, `OpenGraphImage`, `StructuredDataType` - Metadata and schema.org types
+
+**Type Utilities**:
+- `formatPrice(priceInCents, currency)` - Formats price to display string (in `lib/types/product.ts`)
+- `productToCardData(product, basePath)` - Converts full Product to ProductCardData for grid display
+
+**Import Pattern**:
+```typescript
+import { Product, ApiResponse, BusinessInfo } from '@/lib/types';
+import { formatPrice, productToCardData } from '@/lib/types';
+```
 
 ## Styling System
 
@@ -95,6 +125,8 @@ pnpm check:imports    # Verify no named default imports (enforced rule)
 - `ContactCard.tsx` - Form with Zod validation + Resend email
 - `MapEmbed.tsx` - Google Maps iframe (needs API key)
 - `HoursLocation.tsx` - Dynamic "Open Now" badge based on current time
+- `ProductCard.tsx` - Individual product display with image, title, price
+- `ProductGrid.tsx` - Responsive grid layout for products
 
 ## API Routes
 
@@ -109,8 +141,11 @@ pnpm check:imports    # Verify no named default imports (enforced rule)
 - Formats: AVIF, WebP fallback
 - Device sizes: 480, 768, 1080, 1440px
 - Unoptimized in dev for speed
+- Experimental: Package import optimization for `framer-motion`
 
 **Gallery**: Place images in `public/gallery/` as `01.jpg`, `02.jpg`, etc. (update `GalleryGrid.tsx` if adding more than 6)
+
+**Product Images**: Brand collections use external URLs (StockX, Chrome Hearts official site, etc.)
 
 ## Environment Variables (Optional)
 
@@ -124,10 +159,11 @@ NEXT_PUBLIC_BASE_URL             # Production domain
 
 ## ESLint & Import Rules
 
-**Enforced Rules**:
+**Enforced Rules** (`eslint.config.js`):
 - Named default imports are **blocked** (`import/no-named-default`, `import/no-named-as-default`)
 - Use `import Component` NOT `import { default as Component }`
 - Run `pnpm check:imports` to verify compliance
+- Strict TypeScript checking enabled (no ignored build errors)
 
 **Path Alias**: `@/*` maps to project root (e.g., `import { BUSINESS } from '@/lib/constants'`)
 
@@ -135,10 +171,55 @@ NEXT_PUBLIC_BASE_URL             # Production domain
 
 - **React 19 & Next.js 15**: App Router with latest stable versions
 - **Async Params**: Dynamic routes use `await props.params` (Next.js 15 requirement)
-- **No Database**: Fully static with serverless API routes + mock product data
+- **No Database**: Fully static with serverless API routes + hardcoded product data
 - **Dark Mode**: Class-based (`className="dark"` on `<html>`)
 - **Fonts**: Inter (body) + Bebas Neue (headings) via `next/font/google` with `display: swap`
 - **Mobile-First**: Sticky action bar on mobile, responsive container padding
+
+## Brand Collection Pattern
+
+When adding new brand collections to `/apparel/*`:
+
+```typescript
+// app/apparel/brand-name/page.tsx
+import { Metadata } from 'next';
+import Container from '@/components/Container';
+import Section from '@/components/Section';
+import ProductGrid from '@/components/ProductGrid';
+import { getPageMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = getPageMetadata(
+  'BRAND NAME Collection',
+  'Explore the BRAND NAME collection',
+  '/apparel/brand-name'
+);
+
+const brandProducts = [
+  {
+    title: 'Product Name',
+    imageSrc: 'https://example.com/image.jpg',
+    href: '/apparel/brand-name/product-slug',
+    price: '$99.00'
+  }
+];
+
+export default function BrandCollectionPage() {
+  return (
+    <Section className="pt-24">
+      <Container>
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold tracking-tight mb-2">BRAND NAME</h1>
+            <p className="text-lg text-white/80 mb-2">Brand Tagline</p>
+            <p className="text-sm text-white/60">Brand description</p>
+          </div>
+          <ProductGrid items={brandProducts} />
+        </div>
+      </Container>
+    </Section>
+  );
+}
+```
 
 ## Instagram Integration
 
@@ -151,9 +232,8 @@ Uses `react-social-media-embed` (no API key required):
 ## Known TODOs / Placeholders
 
 1. **Email Addresses**:
-   - `BUSINESS.email` is "TODO" in `lib/constants.ts`:26
+   - `BUSINESS.email` uses env var or fallback in `lib/constants/business.ts`:26
    - Contact form `from`/`to` are placeholders in `app/api/contact/route.ts`:31-32
 2. **Instagram Posts**: Add real URLs to `FEATURED_POSTS` in `IGFeed.tsx`
-3. **Google Maps**: Add API key to env (currently placeholder)
-4. **Product Data**: Using mock data (`lib/mock.ts`) - all products use `/imagebox-1.jpg`
-5. **Pre-Deployment**: Update `metadataBase` in `lib/seo.ts` to production domain
+3. **Google Maps**: Add API key to env (currently placeholder in `MapEmbed.tsx`)
+4. **Pre-Deployment**: Update `metadataBase` in `lib/seo.ts` to production domain

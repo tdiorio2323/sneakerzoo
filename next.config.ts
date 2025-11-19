@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   experimental: { optimizePackageImports: ["framer-motion"] },
+  async redirects() {
+    return [
+      {
+        source: '/mens/:path*',
+        destination: '/apparel/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

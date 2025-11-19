@@ -7,32 +7,32 @@ import { getPageMetadata } from '@/lib/seo';
 export const metadata: Metadata = getPageMetadata(
   'GODSPEED Collection',
   'Explore the exclusive GODSPEED "On The Run" collection',
-  '/mens/godspeed'
+  '/apparel/godspeed'
 );
 
 const godspeedProducts = [
   {
     title: 'On The Run - Bone',
-    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/28_fa113e9d-5a9a-4892-b565-8918fb784531.jpg',
-    href: '/mens/godspeed/on-the-run-bone',
+    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/28_fa113e9d-5a9a-4892-b565-8918fb784531.jpg?v=1748701018',
+    href: '/apparel/godspeed/on-the-run-bone',
     price: '$180.00'
   },
   {
     title: 'On The Run - Lavender',
-    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/31_7216a5af-6558-4f9a-9f04-8e4505dbcc21.jpg',
-    href: '/mens/godspeed/on-the-run-lavender',
+    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/31_7216a5af-6558-4f9a-9f04-8e4505dbcc21.jpg?v=1748701226',
+    href: '/apparel/godspeed/on-the-run-lavender',
     price: '$180.00'
   },
   {
     title: 'On The Run - Canary',
-    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/37_8a68fb60-6827-4116-b983-a16bfd3a9696.jpg',
-    href: '/mens/godspeed/on-the-run-canary',
+    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/37_8a68fb60-6827-4116-b983-a16bfd3a9696.jpg?v=1748701018',
+    href: '/apparel/godspeed/on-the-run-canary',
     price: '$180.00'
   },
   {
     title: 'On The Run - Mocha',
-    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/22_d533336d-407b-4928-836d-92e431833ee6.jpg',
-    href: '/mens/godspeed/on-the-run-mocha',
+    imageSrc: 'https://www.godspeednewyork.com/cdn/shop/files/22_d533336d-407b-4928-836d-92e431833ee6.jpg?v=1748701176',
+    href: '/apparel/godspeed/on-the-run-mocha',
     price: '$180.00'
   }
 ];
