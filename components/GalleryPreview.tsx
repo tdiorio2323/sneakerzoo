@@ -4,7 +4,7 @@ import { GALLERY_IMAGES, getGalleryImagePath } from "@/lib/constants/gallery";
 export default function GalleryPreview() {
   return (
     <div className="grid grid-cols-3 gap-2 md:grid-cols-6 md:gap-3">
-      {GALLERY_IMAGES.slice(0, 6).map((img, i) => (
+      {GALLERY_IMAGES.slice(0, 6).map((img) => (
         <a key={img.filename} href="/gallery" className="group relative">
           <Image
             src={getGalleryImagePath(img.filename)}

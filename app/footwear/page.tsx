@@ -20,8 +20,8 @@ export default function FootwearPage() {
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">Footwear Collection</h1>
           <p className="text-base text-white/70 mb-8 max-w-2xl">
-            Discover premium sneakers from Jordan, Nike, New Balance, and more exclusive brands
-            at Staten Island's premier sneaker destination.
+            Discover premium sneakers from Jordan, Nike, New Balance, and more exclusive brands 
+            at Staten Island&apos;s premier sneaker destination.
           </p>
           
           <ProductGrid items={products} />

@@ -172,7 +172,7 @@ export default function VisitPage() {
         {/* CTA to Browse Products */}
         <div className="text-center mt-12">
           <p className="text-white/60 mb-4">
-            Can't make it to the store? Browse our collection online
+            Can&apos;t make it to the store? Browse our collection online
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild variant="outline" size="lg">

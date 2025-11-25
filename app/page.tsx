@@ -46,7 +46,7 @@ export default function HomePage() {
               Shop Our Collections
             </h2>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">
-              Discover exclusive sneakers, premium streetwear, and curated accessories at Staten Island's premier boutique.
+              Discover exclusive sneakers, premium streetwear, and curated accessories at Staten Island&apos;s premier boutique.
             </p>
           </div>
 
