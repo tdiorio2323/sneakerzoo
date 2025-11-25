@@ -5,21 +5,28 @@ import { BUSINESS } from "@/lib/constants";
 /**
  * Featured Instagram Posts
  *
- * Add up to 3 Instagram post URLs to display in the feed.
- *
+ * TODO: Add real Instagram post URLs from @sneakerzooapparel
+ * 
  * How to get post URLs:
  * 1. Visit https://www.instagram.com/sneakerzooapparel/
- * 2. Open any post you want to feature
+ * 2. Open any post you want to feature (recent product photos work best)
  * 3. Click "..." (three dots) → "Copy link"
  * 4. Paste the URL below
  *
- * Example: "https://www.instagram.com/p/ABC123xyz/"
+ * Example format: "https://www.instagram.com/p/ABC123xyz/"
+ *
+ * Recommended: Feature 3 recent posts showing:
+ * - New sneaker arrivals
+ * - Popular apparel items
+ * - In-store events or customer photos
  *
  * See INSTAGRAM_SETUP.md for detailed instructions.
  */
 const FEATURED_POSTS: string[] = [
-  // Add your Instagram post URLs here:
-  // "https://www.instagram.com/p/YOUR_POST_ID/",
+  // TODO: Replace with real Instagram post URLs from @sneakerzooapparel
+  // Example: "https://www.instagram.com/p/YOUR_POST_ID_1/",
+  // Example: "https://www.instagram.com/p/YOUR_POST_ID_2/",
+  // Example: "https://www.instagram.com/p/YOUR_POST_ID_3/",
 ];
 
 export default function IGFeed({ handle = BUSINESS.instagram }: { handle?: string }) {

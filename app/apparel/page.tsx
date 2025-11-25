@@ -18,9 +18,10 @@ export default function ApparelPage() {
     <Section className="pt-24">
       <Container>
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl font-semibold tracking-tight mb-4">Apparel Collection</h1>
-          <p className="text-sm text-white/60 mb-6">
-            Premium streetwear and apparel from top brands
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">Apparel Collection</h1>
+          <p className="text-base text-white/70 mb-8 max-w-2xl">
+            Shop premium streetwear from Chrome Hearts, Supreme, Jordan, and the hottest brands.
+            Fresh styles at Sneaker Zoo, your Staten Island streetwear destination.
           </p>
           
           <ProductGrid items={products} />

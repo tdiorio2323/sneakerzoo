@@ -18,9 +18,10 @@ export default function AccessoriesPage() {
     <Section className="pt-24">
       <Container>
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-2xl font-semibold tracking-tight mb-4">Accessories Collection</h1>
-          <p className="text-sm text-white/60 mb-6">
-            Complete your streetwear look with premium accessories
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">Accessories Collection</h1>
+          <p className="text-base text-white/70 mb-8 max-w-2xl">
+            Complete your look with premium hats, bags, socks, sneaker care essentials, and more.
+            The finishing touches for your streetwear style.
           </p>
           
           <ProductGrid items={products} />

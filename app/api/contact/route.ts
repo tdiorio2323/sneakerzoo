@@ -28,8 +28,8 @@ export async function POST(req: Request) {
     // Send email using Resend (if configured)
     if (resend) {
       await resend.emails.send({
-        from: "site@sneakerzoo.example", // Replace with your verified domain
-        to: "you@example.com", // Replace with your recipient email
+        from: "noreply@sneakerzooapparel.com", // TODO: Replace with your verified Resend domain
+        to: "info@sneakerzooapparel.com", // TODO: Replace with client's real inbox
         subject: "New Contact — Sneaker Zoo",
         text: `Name: ${parsed.data.name}\nEmail: ${parsed.data.email}\nMessage: ${parsed.data.message}`,
         html: `

@@ -23,7 +23,7 @@ export const BUSINESS: {
   postalCode: "10306",
   country: "US",
   phone: "(347) 683-8053", // add when confirmed
-  email: "TODO",
+    email: "info@sneakerzooapparel.com", // TODO: Update with client's real inbox
   website: "https://www.thesneakerzoo.com",
   instagram: "sneakerzooapparel",
   hours: [
@@ -35,11 +35,11 @@ export const BUSINESS: {
 
 export const NAVIGATION = [
   { name: "Home", href: "/" },
-  { name: "Apparel", href: "/apparel" },
   { name: "Footwear", href: "/footwear" },
+  { name: "Apparel", href: "/apparel" },
   { name: "Accessories", href: "/accessories" },
+  { name: "Visit Us", href: "/visit" },
   { name: "Gallery", href: "/gallery" },
-  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ] as const;
 

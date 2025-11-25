@@ -1,157 +1,137 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Instagram, MapPin, Phone, ChevronRight } from "lucide-react";
-import { BUSINESS, SOCIAL_LINKS } from "@/lib/constants";
+import Link from "next/link";
+import { ArrowRight, ShoppingBag, Shirt, Watch } from "lucide-react";
+import Hero from "@/components/Hero";
+import Container from "@/components/Container";
+import Section from "@/components/Section";
+import GalleryPreview from "@/components/GalleryPreview";
+import HoursLocation from "@/components/HoursLocation";
+import { MapEmbed } from "@/components/MapEmbed";
+import { Card, CardContent } from "@/components/ui/card";
+
+// Category card data for the collections section
+const categories = [
+  {
+    title: "Footwear",
+    description: "Exclusive sneakers from Jordan, Nike, New Balance & more",
+    href: "/footwear",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Apparel",
+    description: "Premium streetwear from Chrome Hearts, Supreme & top brands",
+    href: "/apparel",
+    icon: Shirt,
+  },
+  {
+    title: "Accessories",
+    description: "Hats, bags, socks & essentials to complete your look",
+    href: "/accessories",
+    icon: Watch,
+  },
+];
 
 export default function HomePage() {
   return (
-    <>
-      {/* Hide header and footer with CSS */}
-      <style jsx global>{`
-        header, footer, .mobile-stick {
-          display: none !important;
-        }
-        main {
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-      `}</style>
+    <main>
+      {/* Hero Section */}
+      <Hero />
 
-      <div
-        className="min-h-[100svh] md:min-h-[100dvh] w-full flex items-center justify-center p-3 sm:p-4 md:p-6 relative"
-        style={{
-          backgroundImage: "url('/hero-image.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          paddingTop: "max(env(safe-area-inset-top), 0px)",
-          paddingBottom: "max(env(safe-area-inset-bottom), 0px)",
-        }}
-      >
-        <Card className="w-full max-w-[95vw] sm:max-w-md bg-black/10 backdrop-blur-sm border-2 border-white/20 shadow-[0_0_25px_rgba(255,255,255,0.3)] relative z-10 min-h-[72vh] sm:min-h-[60vh]">
-          <CardHeader className="text-center space-y-4 sm:space-y-5 p-6 sm:p-8">
-            <div className="flex items-center justify-center">
-              <img
-                src="/Sneaker zoo Logo White.png"
-                alt="Sneaker Zoo"
-                className="h-24 sm:h-28 md:h-32 w-auto object-contain"
-              />
-            </div>
+      {/* Shop Collections Section */}
+      <Section className="bg-black">
+        <Container>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+              Shop Our Collections
+            </h2>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+              Discover exclusive sneakers, premium streetwear, and curated accessories at Staten Island's premier boutique.
+            </p>
+          </div>
 
-            <h1 className="text-3xl sm:text-4xl text-white text-center font-bebas">
-              Sneaker Zoo
-            </h1>
-
-            {/* Buttons */}
-            <div className="flex flex-col gap-2.5 sm:gap-3 w-full px-4 sm:px-8">
-              {/* Row 1: Enter Site (Full Width) */}
-              <Button
-                type="button"
-                onClick={() => window.location.href = "/gallery"}
-                className="w-full h-12 sm:h-14 text-black font-bold text-xl sm:text-2xl tracking-wider font-bebas bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
-                  boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                ENTER SITE
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
-              </Button>
-
-              {/* Row 2: Follow Us (Full Width) */}
-              <Button
-                type="button"
-                onClick={() => window.open("https://www.instagram.com/sneakerzooapparel/", "_blank")}
-                className="w-full h-12 sm:h-14 text-black font-bold text-xl sm:text-2xl tracking-wider font-bebas bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
-                  boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                FOLLOW US
-              </Button>
-
-              {/* Row 3: Shop In Person (Full Width) */}
-              <Button
-                type="button"
-                onClick={() => window.open("https://share.google/BGdYANudsnHXSzTff", "_blank")}
-                className="w-full h-12 sm:h-14 text-black font-bold text-xl sm:text-2xl tracking-wider font-bebas bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
-                  boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                SHOP IN PERSON
-              </Button>
-
-              {/* Row 4: Call Us (Full Width) */}
-              <Button
-                type="button"
-                onClick={() => window.open("tel:3476838053", "_self")}
-                className="w-full h-12 sm:h-14 text-black font-bold text-xl sm:text-2xl tracking-wider font-bebas bg-white hover:bg-white/90 shadow-[0_8px_30px_rgb(255,255,255,0.4)] border-2 border-white/50"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0.95) 100%)",
-                  boxShadow: "0 8px 30px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                CALL US
-              </Button>
-            </div>
-
-            {/* Image Box */}
-            <div className="w-full px-4 sm:px-8 mt-3 sm:mt-4">
-              <div className="relative w-full h-56 sm:h-64 md:h-72 rounded-lg overflow-hidden border-2 border-white/20 shadow-lg">
-                <img
-                  src="/imagebox-1.jpg"
-                  alt="Sneaker Zoo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="mt-3 sm:mt-4 text-center space-y-2 sm:space-y-3">
-              <div className="text-white text-xs sm:text-sm px-2 font-sans">
-                {BUSINESS.addressLine}, {BUSINESS.city}, {BUSINESS.region} {BUSINESS.postalCode}
-              </div>
-              <div className="flex items-center justify-center gap-4 sm:gap-5">
-                <a
-                  href={SOCIAL_LINKS.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors"
-                  aria-label="Instagram"
+          {/* Category Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <Link
+                  key={category.href}
+                  href={category.href}
+                  className="group"
                 >
-                  <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-                {BUSINESS.phone && (
-                  <a
-                    href={`tel:${BUSINESS.phone.replace(/\D/g, "")}`}
-                    className="text-white hover:text-white/80 transition-colors"
-                    aria-label="Phone"
-                  >
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </a>
-                )}
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS.mapQuery)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors"
-                  aria-label="Location"
-                >
-                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
-                </a>
-              </div>
-            </div>
-          </CardHeader>
+                  <Card className="h-full transition-all duration-300 hover:border-white/30 hover:shadow-lg hover:shadow-white/5">
+                    <CardContent className="p-6 h-full flex flex-col">
+                      <div className="mb-4 p-3 bg-white/5 rounded-lg w-fit">
+                        <Icon className="h-8 w-8 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-2 group-hover:text-white/90 transition-colors">
+                        {category.title}
+                      </h3>
+                      <p className="text-white/60 text-sm mb-4 flex-grow">
+                        {category.description}
+                      </p>
+                      <div className="flex items-center text-white/80 group-hover:text-white transition-colors">
+                        <span className="text-sm font-medium">Shop Now</span>
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
 
-          <CardContent className="pb-4 sm:pb-6" />
-        </Card>
-      </div>
-    </>
+      {/* Gallery Preview Section */}
+      <Section className="bg-black border-t border-white/5">
+        <Container>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+              Latest Drops
+            </h2>
+            <p className="text-white/70 text-base">
+              Check out our newest arrivals and exclusive finds
+            </p>
+          </div>
+
+          <GalleryPreview />
+
+          {/* View Full Gallery Link */}
+          <div className="text-center mt-8">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 btn-primary text-base px-6 py-3"
+            >
+              View Full Gallery
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Location & Hours Section */}
+      <Section className="bg-black border-t border-white/5">
+        <Container>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+              Visit Us in Staten Island
+            </h2>
+            <p className="text-white/70 text-base">
+              Stop by our Richmond Road location to see the full collection
+            </p>
+          </div>
+
+          {/* Hours + Map Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <HoursLocation />
+            <div className="flex flex-col justify-center">
+              <MapEmbed />
+            </div>
+          </div>
+        </Container>
+      </Section>
+    </main>
   );
 }
