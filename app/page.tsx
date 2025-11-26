@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ShoppingBag, Shirt, Watch } from "lucide-react";
 import Hero from "@/components/Hero";
 import Container from "@/components/Container";
@@ -17,18 +18,21 @@ const categories = [
     description: "Exclusive sneakers from Jordan, Nike, New Balance & more",
     href: "/footwear",
     icon: ShoppingBag,
+    image: "/imagebox-1.jpg",
   },
   {
     title: "Apparel",
     description: "Premium streetwear from Chrome Hearts, Supreme & top brands",
     href: "/apparel",
     icon: Shirt,
+    image: "/hero-image.jpg",
   },
   {
     title: "Accessories",
     description: "Hats, bags, socks & essentials to complete your look",
     href: "/accessories",
     icon: Watch,
+    image: "/imagebox-1.jpg",
   },
 ];
 
@@ -60,20 +64,38 @@ export default function HomePage() {
                   href={category.href}
                   className="group"
                 >
-                  <Card className="h-full transition-all duration-300 hover:border-white/30 hover:shadow-lg hover:shadow-white/5">
-                    <CardContent className="p-6 h-full flex flex-col">
-                      <div className="mb-4 p-3 bg-white/5 rounded-lg w-fit">
-                        <Icon className="h-8 w-8 text-white" />
+                  <Card className="h-full overflow-hidden transition-all duration-300 hover:border-white/30 hover:shadow-lg hover:shadow-white/5">
+                    <CardContent className="p-0 h-full flex flex-col">
+                      {/* Image Box */}
+                      <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-900">
+                        <Image
+                          src={category.image}
+                          alt={`${category.title} collection at Sneaker Zoo`}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                        />
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+                        {/* Icon Badge on Image */}
+                        <div className="absolute top-4 right-4 p-3 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                          <Icon className="h-6 w-6 text-white" />
+                        </div>
                       </div>
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-white/90 transition-colors">
-                        {category.title}
-                      </h3>
-                      <p className="text-white/60 text-sm mb-4 flex-grow">
-                        {category.description}
-                      </p>
-                      <div className="flex items-center text-white/80 group-hover:text-white transition-colors">
-                        <span className="text-sm font-medium">Shop Now</span>
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+
+                      {/* Text Content */}
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-2xl font-bold mb-2 group-hover:text-white/90 transition-colors">
+                          {category.title}
+                        </h3>
+                        <p className="text-white/60 text-sm mb-4 flex-grow">
+                          {category.description}
+                        </p>
+                        <div className="flex items-center text-white/80 group-hover:text-white transition-colors">
+                          <span className="text-sm font-medium">Shop Now</span>
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
