@@ -5,9 +5,7 @@ import { baseMetadata } from "@/lib/seo";
 import { localBusinessJsonLd } from "@/lib/schema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapEmbed } from "@/components/MapEmbed";
-import Container from "@/components/Container";
-import Section from "@/components/Section";
+
 import { BUSINESS } from "@/lib/constants";
 
 const inter = Inter({
@@ -44,15 +42,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
 
-        {/* Map Section - Above Footer */}
-        <Section className="py-12 bg-black/20">
-          <Container>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-              Visit Our Store
-            </h2>
-            <MapEmbed />
-          </Container>
-        </Section>
+
 
         <Footer />
         {/* Mobile sticky actions */}

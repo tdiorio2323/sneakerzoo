@@ -39,7 +39,6 @@ export const NAVIGATION = [
   { name: "Apparel", href: "/apparel" },
   { name: "Accessories", href: "/accessories" },
   { name: "Visit Us", href: "/visit" },
-  { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ] as const;
 
